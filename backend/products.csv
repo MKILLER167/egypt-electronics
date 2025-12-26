@@ -1,0 +1,20 @@
+name,price,image,brand,category,store,availability,rating
+"Arduino Uno R3 Development Board",450.0,"https://images.unsplash.com/photo-1553406830-ef2513450d76?w=300&h=300&fit=crop","Arduino","Development Boards","Microohm","In Stock",4.8
+"ESP32-CAM + ESP32-CAM-MB – 2MP OV2640",165.0,"https://images.unsplash.com/photo-1608564697071-ddf911d81370?w=300&h=300&fit=crop","Espressif","Wireless Modules","Microohm","In Stock",4.7
+"Raspberry Pi 4 Model B 4GB RAM",1250.0,"https://images.unsplash.com/photo-1559163499-413811fb2344?w=300&h=300&fit=crop","Raspberry Pi","Single Board Computers","Microohm","In Stock",4.9
+"Arduino Mega 2560",650.0,"https://images.unsplash.com/photo-1553406830-ef2513450d76?w=300&h=300&fit=crop","Arduino","Development Boards","Microohm","In Stock",4.7
+"ESP8266 NodeMCU Lua",75.0,"https://images.unsplash.com/photo-1608564697071-ddf911d81370?w=300&h=300&fit=crop","Espressif","Wireless Modules","Microohm","In Stock",4.5
+"Breadboard 830 Points",45.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Components","Microohm","In Stock",4.3
+"Jumper Wires 120pcs",35.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Components","Microohm","In Stock",4.2
+"DC Motor 12V 100RPM",125.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Motors","Microohm","In Stock",4.3
+"LED Assortment 100pcs",55.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Components","Microohm","In Stock",4.1
+"Soldering Iron Station",280.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Tools","Microohm","In Stock",4.4
+"Raspberry Pi Pico W",95.0,"https://images.unsplash.com/photo-1559163499-413811fb2344?w=300&h=300&fit=crop","Raspberry Pi","Microcontrollers","ElectroHub","In Stock",4.6
+"ESP32 DevKit V1 WiFi Bluetooth",85.0,"https://images.unsplash.com/photo-1608564697071-ddf911d81370?w=300&h=300&fit=crop","Espressif","Wireless Modules","ElectroHub","In Stock",4.6
+"Arduino Nano Every",220.0,"https://images.unsplash.com/photo-1553406830-ef2513450d76?w=300&h=300&fit=crop","Arduino","Development Boards","ElectroHub","In Stock",4.5
+"Raspberry Pi 3 Model B+",750.0,"https://images.unsplash.com/photo-1559163499-413811fb2344?w=300&h=300&fit=crop","Raspberry Pi","Single Board Computers","ElectroHub","In Stock",4.5
+"Jumper Wires 120pcs",35.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Components","Ekostra","In Stock",4.2
+"LED Assortment 100pcs",55.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Components","RAM","In Stock",4.1
+"DC Motor 12V 100RPM",125.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Motors","ElectroHub","In Stock",4.3
+"Servo Motor SG90",85.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Motors","Microohm","In Stock",4.4
+"Relay 5V 1 Channel",25.0,"https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=300&h=300&fit=crop","Generic","Components","Ekostra","In Stock",4.2

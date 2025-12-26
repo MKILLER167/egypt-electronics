@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>Egypt Electronics API Test</h1>
+    <button onclick="testAPI()">Test API Connection</button>
+    <div id="result"></div>
+    
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/products');
+                const products = await response.json();
+                resultDiv.innerHTML = `
+                    <h2>Success! Found ${products.length} products</h2>
+                    <pre>${JSON.stringify(products, null, 2)}</pre>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h2>Error: ${error.message}</h2>
+                    <p>Make sure FastAPI server is running on http://localhost:8000</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
