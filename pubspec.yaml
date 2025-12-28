@@ -1,0 +1,32 @@
+name: egypt_electronics
+description: Egypt Electronics Price Comparison App
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.0.0"
+
+# GitHub Pages configuration
+publish_to: 'none' # Remove this line for publishing to pub.dev
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  http: ^1.1.0
+  provider: ^6.0.5
+  cached_network_image: ^3.2.3
+  flutter_staggered_grid_view: ^0.7.0
+  flutter_svg: ^2.0.7
+  shared_preferences: ^2.2.2
+  fluttertoast: ^8.2.2
+  shimmer: ^3.0.0
+  lottie: ^2.7.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
