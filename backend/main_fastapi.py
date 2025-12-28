@@ -13,21 +13,21 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'scrapers'))
 
 app = FastAPI(title="Egypt Electronics API")
 
-# CORS middleware
+# CORS middleware - Updated for Flutter
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:55109", "*"],  # Added Flutter web port and wildcard
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Pydantic models
+# Pydantic models - Updated for Flutter compatibility
 class Product(BaseModel):
     id: int
     name: str
     price: float
-    image: str
+    image: Optional[str] = ""  # Made optional with default
     brand: str
     category: str
     store: str
@@ -78,8 +78,23 @@ async def root():
 
 @app.get("/api/products", response_model=List[Product])
 async def get_products():
-    """Get all products"""
-    return products_db
+    """Get all products - Flutter compatible"""
+    # Ensure all products have required fields for Flutter
+    flutter_products = []
+    for product in products_db:
+        flutter_product = {
+            "id": product.id,
+            "name": product.name,
+            "price": product.price,
+            "image": product.image if product.image else "",
+            "brand": product.brand,
+            "category": product.category,
+            "store": product.store,
+            "availability": product.availability,
+            "rating": product.rating
+        }
+        flutter_products.append(flutter_product)
+    return flutter_products
 
 @app.get("/api/stats")
 async def get_stats():
@@ -105,7 +120,7 @@ async def get_stats():
 
 @app.post("/api/scrape", response_model=ScrapeStatus)
 async def start_scraping():
-    """Start scraping all stores"""
+    """Start scraping all stores - Flutter compatible"""
     global scraping_status, products_db
     
     if scraping_status["status"] == "running":
@@ -117,7 +132,7 @@ async def start_scraping():
     
     scraping_status = {
         "status": "running",
-        "message": "Starting scraping...",
+        "message": "Starting scraping for Flutter app...",
         "products_count": len(products_db)
     }
     
@@ -150,13 +165,13 @@ async def start_scraping():
                         print(f"Scraped {len(scraped_products)} products from {store}")
                         if scraped_products:
                             for product in scraped_products:
-                                # Handle different scraper output formats
+                                # Handle different scraper output formats - Flutter compatible
                                 if isinstance(product, dict):
                                     product_dict = {
                                         "id": len(all_products) + 1,
                                         "name": product.get("name", "Unknown Product"),
                                         "price": float(product.get("price", 0)),
-                                        "image": product.get("image", ""),
+                                        "image": product.get("image", "") or "",  # Ensure non-null
                                         "brand": product.get("brand", "Unknown"),
                                         "category": product.get("category", "Electronics"),
                                         "store": store,
@@ -169,7 +184,7 @@ async def start_scraping():
                                         "id": len(all_products) + 1,
                                         "name": getattr(product, "name", "Unknown Product"),
                                         "price": float(getattr(product, "price", 0)),
-                                        "image": getattr(product, "image", ""),
+                                        "image": getattr(product, "image", "") or "",  # Ensure non-null
                                         "brand": getattr(product, "brand", "Unknown"),
                                         "category": getattr(product, "category", "Electronics"),
                                         "store": store,
@@ -184,13 +199,13 @@ async def start_scraping():
                 products_db = all_products
                 scraping_status = {
                     "status": "completed",
-                    "message": f"Successfully scraped {len(all_products)} products",
+                    "message": f"Successfully scraped {len(all_products)} products for Flutter app",
                     "products_count": len(all_products)
                 }
             else:
                 scraping_status = {
                     "status": "completed",
-                    "message": "No products found from scrapers",
+                    "message": "No products found from scrapers - try adding sample data",
                     "products_count": 0
                 }
         except Exception as e:
@@ -205,13 +220,13 @@ async def start_scraping():
     
     return ScrapeStatus(
         status="running",
-        message="Scraping started...",
+        message="Scraping started for Flutter app...",
         products_count=len(products_db)
     )
 
 @app.post("/api/products/add-sample")
 async def add_sample_data():
-    """Add sample products for testing"""
+    """Add sample products for Flutter app testing"""
     global products_db
     
     sample_products = [
@@ -269,11 +284,66 @@ async def add_sample_data():
             store="RAM",
             availability="In Stock",
             rating=4.5
+        ),
+        Product(
+            id=6,
+            name="STM32F103C8T6 Blue Pill Development Board",
+            price=65.0,
+            image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop",
+            brand="STMicroelectronics",
+            category="Development Boards",
+            store="Microohm",
+            availability="In Stock",
+            rating=4.4
+        ),
+        Product(
+            id=7,
+            name="OLED Display 128x64 I2C Module",
+            price=35.0,
+            image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop",
+            brand="Generic",
+            category="Displays",
+            store="Ekostra",
+            availability="In Stock",
+            rating=4.3
+        ),
+        Product(
+            id=8,
+            name="Breadboard 830 Points Solderless",
+            price=25.0,
+            image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop",
+            brand="Generic",
+            category="Prototyping",
+            store="RAM",
+            availability="In Stock",
+            rating=4.2
+        ),
+        Product(
+            id=9,
+            name="Jumper Wires 20cm Male-Female (40pcs)",
+            price=15.0,
+            image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop",
+            brand="Generic",
+            category="Wiring",
+            store="ElectroHub",
+            availability="In Stock",
+            rating=4.1
+        ),
+        Product(
+            id=10,
+            name="USB Type-C Cable 1.5m Fast Charging",
+            price=40.0,
+            image="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop",
+            brand="Generic",
+            category="Cables",
+            store="Microohm",
+            availability="In Stock",
+            rating=4.0
         )
     ]
     
     products_db = sample_products
-    return {"message": f"Added {len(sample_products)} sample products"}
+    return {"message": f"Added {len(sample_products)} sample products for Flutter app"}
 
 @app.get("/api/scrape/status", response_model=ScrapeStatus)
 async def get_scrape_status():
